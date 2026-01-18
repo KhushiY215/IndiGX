@@ -20,10 +20,18 @@ class CompanyRepository:
                 CompanyPrimary.company_id,
                 CompanyPrimary.company_name
             )
-            return session.exec(stmt).all()
+            results = session.exec(stmt).all()
+        
+            return [
+                {
+                    "company_id": row.company_id,
+                    "company_name": row.company_name
+                }
+                for row in results
+            ]
 
     @staticmethod
-    def get_company_by_id(company_id: str):  # ✅ TEXT ID
+    def get_company_by_id(company_id: int):  
         with get_session() as session:
             stmt = (
                 select(CompanyPrimary)
@@ -32,7 +40,7 @@ class CompanyRepository:
             return session.exec(stmt).first()
 
     @staticmethod
-    def get_company_full_profile(company_id: str):  # ✅ TEXT ID
+    def get_company_full_profile(company_id: int): 
         """
         Load full company aggregate using joins.
         """

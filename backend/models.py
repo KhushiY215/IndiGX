@@ -21,10 +21,10 @@ class CompanyPrimary(SQLModel, table=True):
     geographic_coverage_india: str | None
 
     secondary: "CompanySecondary"  = Relationship(back_populates="company")
-    competitive_intelligence: "CompetitiveIntelligence"  = Relationship(back_populates="company")
+    competitive_intelligence: "CompetitiveIntelligence" = Relationship(back_populates="company")
     contact_information: "ContactInformation" = Relationship(back_populates="company")
-    digital_presence_brand: "DigitalPresenceBrand" = Relationship(back_populates="company")
-    financials_funding: "FinancialsFunding"  = Relationship(back_populates="company")
+    digital_presence_brand: "DigitalPresenceBrand"  = Relationship(back_populates="company")
+    financials_funding: "FinancialsFunding" = Relationship(back_populates="company")
     indygx_assessment: "IndygxAssessment" = Relationship(back_populates="company")
     partnerships_ecosystem: "PartnershipsEcosystem"  = Relationship(back_populates="company")
 
@@ -58,8 +58,8 @@ class CompetitiveIntelligence(SQLModel, table=True):
     competitors: str | None
     unique_differentiators: str | None
     competitive_advantages: str | None
-    weakness_gaps: str | None
-    key_challenges_needs: str | None
+    weakness_gaps_in_offering: str | None
+    key_challenges_and_needs: str | None
 
     company: "CompanyPrimary" = Relationship(back_populates="competitive_intelligence")
 
@@ -111,7 +111,7 @@ class FinancialsFunding(SQLModel, table=True):
     annual_revenues: str | None
     annual_profits: str | None
     company_valuation: str | None
-    yoy_growth_rate: str | None
+    year_over_year_growth_rate: str | None
     profitability_status: str | None
     market_share: str | None
     key_investors_backers: str | None
@@ -128,7 +128,7 @@ class IndygxAssessment(SQLModel, table=True):
     __tablename__ = "indygx_assessment"
 
     company_id: int = Field(primary_key=True, foreign_key="company_primary.company_id")
-    previous_interactions: str | None
+    previous_interactions_with_indygx: str | None
     partnership_potential_rating: str | None
     collaboration_opportunity_score: str | None
     complementary_services_match_score: str | None
@@ -147,8 +147,7 @@ class PartnershipsEcosystem(SQLModel, table=True):
     university_academic_partnerships: str | None
     industry_associations_memberships: str | None
     strategic_partnerships: str | None
-    rnd_investment_percentage: str | None
+    rd_investment_percentage: str | None
     technology_partners: str | None
 
-    company: "CompanyPrimary" = Relationship(back_populates="partnerships_ecosystem")
- 
+    company: "CompanyPrimary" = Relationship(back_populates="partnerships_ecosystem") 

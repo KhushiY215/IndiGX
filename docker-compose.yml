@@ -1,0 +1,10 @@
+version: "3.9"
+
+services:
+  company-core:
+    build: ./services/company-core
+    ports:
+      - "8001:8000"
+    env_file:
+      - .env
+ 

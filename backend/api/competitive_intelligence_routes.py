@@ -35,3 +35,4 @@ def delete_competitive_intelligence(company_id: int):
     if not ok:
         raise HTTPException(status_code=404, detail="Not found")
     return {"deleted": True}
+

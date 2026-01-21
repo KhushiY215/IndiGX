@@ -1,10 +1,58 @@
-version: "3.9"
+
 
 services:
   company-core:
     build: ./services/company-core
+    container_name: company-core
     ports:
       - "8001:8000"
     env_file:
       - .env
- 
+
+  company-profile:
+    build: ./services/company-profile
+    container_name: company-profile
+    ports:
+      - "8002:8000"
+    env_file:
+      - .env
+
+  financial-intel:
+    build: ./services/financial-intel
+    container_name: financial-intel
+    ports:
+      - "8003:8000"
+    env_file:
+      - .env
+
+  competitive-intel:
+    build: ./services/competitive-intel
+    container_name: competitive-intel
+    ports:
+      - "8004:8000"
+    env_file:
+      - .env
+
+  partnership:
+    build: ./services/partnership
+    container_name: partnership
+    ports:
+      - "8005:8000"
+    env_file:
+      - .env
+
+  contact:
+    build: ./services/contact
+    container_name: contact
+    ports:
+      - "8006:8000"
+    env_file:
+      - .env
+
+  indygx-assessment:
+    build: ./services/indygx-assessment
+    container_name: indygx-assessment
+    ports:
+      - "8007:8000"
+    env_file:
+      - .env
